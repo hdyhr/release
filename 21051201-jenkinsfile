@@ -21,10 +21,12 @@ pipeline {
                     }
                 }
 
-                stage('echo message for stage 2') {
-                    sh """
-                    echo 'Stage 2 Completed - 21051201'
-                    """
+                stage('echo message') {
+                    steps {
+                        sh """
+                        echo 'Stage 2 Completed - 21051201'
+                        """
+                    }
                 }
             }
 
