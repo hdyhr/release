@@ -1,0 +1,49 @@
+pipeline {
+
+    agent any
+
+    stages {
+        stage('Stage 1 - 21051201') {
+            steps {
+                echo 'Stage 1 Completed - 21051201'
+            }
+        }
+
+        stage('Stage 2 - 21051201') {
+            parallel {
+                stage('Creating a Container & running the image') {
+                    steps {
+                        sh """
+                        docker run -it -d --name stage2-21051201 apache2-21051201-image
+                        """
+                    }
+                }
+
+                stage('echo message for stage 2') {
+                    echo 'Stage 2 Completed - 21051201'
+                }
+            }
+
+        }
+
+        stage('Stage 3 - 21051201') {
+            steps {
+                echo 'Stage 3 Completed - 21051201'
+            }
+        }
+
+        stage('Stage 4 - 21051201') {
+            steps {
+                input('Proceed to release the work?')
+            }
+        }
+
+        stage('Stage 5 - 21051201') {
+            steps {
+                echo 'Work Released - 21051201'
+            }
+        }
+        
+
+    }   
+}
