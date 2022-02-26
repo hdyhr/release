@@ -41,9 +41,7 @@ pipeline {
 
         stage('Stage 5 - 21051201') {
             steps {
-                sh """
-                echo 'Work Released - 21051201'
-                """
+                sh "echo 'Work Released - 21051201'"
             }
         }
         
