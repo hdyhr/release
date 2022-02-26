@@ -16,10 +16,7 @@ pipeline {
                 stage('Stage 2 - 21051201') {
                     steps {
                         sh "docker run -it -d --name stage2-21051201 apache2-21051201-image"
-                        sh """
-                            echo 'Stage 2 Completed - 21051201'
-                        """
-                    
+                        sh "echo 'Stage 2 Completed - 21051201'"
                     }
                 }
 
