@@ -11,35 +11,28 @@ pipeline {
             }
         }
 
-        stage('Stage 2 - 21051201') {
+        stage('Parallel Stage') {
             parallel {
-                stage('Creating a Container & running the image') {
+                stage('Stage 2 - 21051201') {
                     steps {
+                        sh "docker run -it -d --name stage2-21051201 apache2-21051201-image"
                         sh """
-                        docker run -it -d --name stage2-21051201 apache2-21051201-image
+                            echo 'Stage 2 Completed - 21051201'
                         """
+                    
                     }
                 }
 
-                stage('echo message') {
+                stage('Stage 3 - 21051201') {
                     steps {
-                        sh """
-                        echo 'Stage 2 Completed - 21051201'
-                        """
+                        sh "echo 'Stage 3 Completed - 21051201'"
                     }
                 }
             }
 
         }
 
-        stage('Stage 3 - 21051201') {
-            steps {
-                sh """
-                echo 'Stage 3 Completed - 21051201'
-                """
-            }
-        }
-
+       
         stage('Stage 4 - 21051201') {
             steps {
                 input('Proceed to release the work?')
